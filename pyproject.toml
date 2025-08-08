@@ -1,0 +1,24 @@
+[project]
+name = "fit2gpx"
+version = "0.1.0"
+description = "Convert Garmin .fit files to .gpx, preserving heart rate and cadence"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    { name="Angelos Orfanakos", email="a@angelos.dev" }
+]
+dependencies = [
+    "fitdecode>=0.10",
+    "geopy>=2.0"
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/agorf/fit2gpx"
+
+[project.scripts]
+fit2gpx = "fit2gpx.cli:main"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
