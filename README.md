@@ -31,7 +31,7 @@ If a file has no track data, you’ll see:
 
 ## License
 
-MIT
+[MIT](https://github.com/agorf/fit2gpx/blob/main/LICENSE)
 
 ## Author
 
