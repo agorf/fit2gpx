@@ -12,18 +12,20 @@ class FitConverter:
 
     def convert(self):
         with fitdecode.FitReader(self.fit_path) as fit:
-            print(f"{self.fit_path} -> ", end='')
-
             data = FitData(fit)
 
-            if data.records:
-                with open(self.__gpx_filename(data), 'w') as f:
-                    creator = f"{basename(argv[0])} {basename(self.fit_path)}"
-                    activity_name = f"{data.area} {data.sport}"
-                    f.write(GpxGenerator(data.records, creator, activity_name).to_xml())
-                    print(f.name)
-            else:
-                print('no data')
+            if not data.records:
+                return None
+
+            gpx_path = self.__gpx_filename(data)
+            creator = f"{basename(argv[0])} {basename(self.fit_path)}"
+            activity_name = f"{data.area} {data.sport}"
+
+            with open(gpx_path, 'w') as f:
+                gpx_xml = GpxGenerator(data.records, creator, activity_name).to_xml()
+                f.write(gpx_xml)
+
+            return gpx_path
 
     def __gpx_filename(self, data):
         return f"{data.timestamp.isoformat()}-{self.__slugify(data.area)}-{data.sport.lower()}.gpx"

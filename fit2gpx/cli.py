@@ -11,7 +11,11 @@ def main():
         sys.exit(1)
 
     for fit_path in sys.argv[1:]:
-        FitConverter(fit_path).convert()
+        print(f"{fit_path} -> ", end='')
+
+        gpx_path = FitConverter(fit_path).convert()
+        print(gpx_path if gpx_path else "no data")
+
         sleep(1) # Max 1 req/sec
 
 if __name__ == "__main__":
