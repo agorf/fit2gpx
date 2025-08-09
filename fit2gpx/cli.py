@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+from os import path
 from time import sleep
 
 from .fit_converter import FitConverter
@@ -12,6 +13,10 @@ def main():
 
     for fit_path in sys.argv[1:]:
         print(f"{fit_path} -> ", end='')
+
+        if not path.isfile(fit_path):
+            print("file not found")
+            continue
 
         gpx_path = FitConverter(fit_path).convert()
         print(gpx_path if gpx_path else "no data")
