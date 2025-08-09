@@ -35,4 +35,4 @@ MIT
 
 ## Author
 
-Angelos Orfanakos — https://angelos.dev/
+[Angelos Orfanakos](https://angelos.dev/)
