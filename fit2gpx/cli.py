@@ -18,8 +18,11 @@ def main():
             print("file not found")
             continue
 
-        gpx_path = FitConverter(fit_path).convert()
-        print(gpx_path if gpx_path else "no data")
+        try:
+            gpx_path = FitConverter(fit_path).convert()
+            print(gpx_path if gpx_path else "no data")
+        except Exception:
+            print("conversion failed")
 
         sleep(1) # Max 1 req/sec
 
