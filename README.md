@@ -19,6 +19,7 @@ Note: Requires Python ≥ 3.8. Dependencies (installed automatically): `fitdecod
 
 You can also use Docker:
 
+    docker build -t fit2gpx .
     docker run --rm -v path/to/fit/files/:/work fit2gpx *.fit
 
 The resulting `.gpx` files will be written under `path/to/fit/files/`
