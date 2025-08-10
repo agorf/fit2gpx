@@ -14,6 +14,12 @@ From source:
 
 Note: Requires Python ≥ 3.8. Dependencies (installed automatically): `fitdecode`, `geopy`.
 
+You can also use Docker:
+
+    docker run --rm -v path/to/fit/files/:/work fit2gpx *.fit
+
+The resulting `.gpx` files will be written under `path/to/fit/files/`
+
 ## Usage
 
 Convert one or more `.fit` files. Each `.gpx` is written next to its input file (same basename):
