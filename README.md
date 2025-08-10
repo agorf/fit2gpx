@@ -4,10 +4,13 @@ Convert Garmin `.fit` files to `.gpx`, preserving location, time, altitude, hear
 
 ## Install
 
-From source:
+Get the source:
 
     git clone https://github.com/agorf/fit2gpx.git
     cd fit2gpx
+
+Install it in your machine:
+
     python -m venv .venv
     source .venv/bin/activate
     pip install .
