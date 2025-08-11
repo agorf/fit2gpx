@@ -1,6 +1,13 @@
 # fit2gpx
 
-Convert Garmin `.fit` files to `.gpx`, preserving location, time, altitude, heart rate and cadence (extensions)
+Convert Garmin `.fit` files to `.gpx`
+
+Features:
+
+- Support bulk-conversion (one or more files)
+- Preserve location (latitude, longitude), time and altitude
+- Preserve heart rate and cadence extensions
+- Name GPX file to follow Garmin's original naming of `<time>-<location>-<activity_type>.gpx`
 
 ## Install
 
@@ -20,24 +27,32 @@ Note: Requires Python ≥ 3.8. Dependencies (installed automatically): `fitdecod
 You can also use Docker:
 
     docker build -t fit2gpx .
-    docker run --rm -v path/to/fit/files/:/work fit2gpx *.fit
 
-The resulting `.gpx` files will be written under `path/to/fit/files/`
+See _Usage_ section on how to run it with Docker.
 
 ## Usage
 
-Convert one or more `.fit` files. Each `.gpx` is written next to its input file (same basename):
+Convert a single file in the current directory:
 
-    fit2gpx activity1.fit activity2.fit
+    fit2gpx 19608508047_ACTIVITY.fit
 
 Example output:
 
-    activity1.fit -> activity1.gpx
-    activity2.fit -> activity2.gpx
+    19608508047_ACTIVITY.fit -> 2025-07-02T04:39:39+00:00-argithea-mountaineering.gpx
 
-If a file has no track data, you’ll see:
+Note: Each `.gpx` file is written under the same directory as its corresponding `.fit` file.
 
-    activity.fit -> no data
+With Docker:
+
+    docker run --rm -v .:/work fit2gpx 19608508047_ACTIVITY.fit
+
+Convert all files in the current directory:
+
+    fit2gpx *.fit
+
+With Docker:
+
+    docker run --rm -v .:/work fit2gpx *.fit
 
 ## License
 
